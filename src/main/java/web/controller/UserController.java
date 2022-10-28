@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,17 +11,16 @@ import web.service.UserService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
-
     private final UserService userService;
-
+@Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
 
-    @GetMapping
+    @GetMapping("/")
     public String getAllUsers(Model model) {
         model.addAttribute("user", userService.getAllUsers());
         return "user/alluser";
